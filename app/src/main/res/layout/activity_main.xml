@@ -1,28 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".MainActivity">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
     <ImageView
-            android:layout_width="194dp"
-            android:layout_height="192dp" app:srcCompat="@drawable/cow" tools:layout_editor_absoluteY="100dp"
-            tools:layout_editor_absoluteX="122dp" android:id="@+id/imageView3"/>
+        android:id="@+id/imageViewGallows"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:src="@drawable/gallows0"
+        app:layout_constraintBottom_toTopOf="@+id/textViewWord"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-            android:text="_A_______"
-            android:layout_width="176dp"
-            android:layout_height="78dp" tools:layout_editor_absoluteY="354dp"
-            tools:layout_editor_absoluteX="56dp"
-            android:id="@+id/textView"
-            android:textAppearance="?android:textAppearanceLarge"
-            android:letterSpacing="0.5"
-            android:textAllCaps="true"
-    />
+        android:id="@+id/textViewWord"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:letterSpacing="0.5"
+        android:textAllCaps="true"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toTopOf="@+id/editTextLetter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-            android:hint="Guess a letter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" tools:layout_editor_absoluteY="605dp"
-            tools:layout_editor_absoluteX="146dp"/>
+        android:id="@+id/editTextLetter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:hint="@string/guessLetterHint"
+        android:inputType="textCapCharacters"
+        android:maxLength="1"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:typeface="monospace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonOk"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonOk"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
+        android:text="@string/ok"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/editTextLetter"
+        android:onClick="guessLetter"
+        />
 </android.support.constraint.ConstraintLayout>
