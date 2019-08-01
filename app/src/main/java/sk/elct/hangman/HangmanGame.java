@@ -1,10 +1,11 @@
 package sk.elct.hangman;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class HangmanGame {
+public class HangmanGame implements Serializable {
     // na zaciatku mam 6 pokusov
     public static final int DEFAULT_ATTEMPTS_LEFT = 6;
 

@@ -15,10 +15,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileOutputStream;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String BUNDLE_KEY = "game";
     private HangmanGame game;
 
     private TextView textViewWord;
@@ -46,9 +48,27 @@ public class MainActivity extends AppCompatActivity {
         imageViewGallows = findViewById(R.id.imageViewGallows);
         buttonOk = findViewById(R.id.buttonOk);
 
-        restart();
+        // spusta sa aplikacia
+        if (savedInstanceState == null) {
+            game = new HangmanGame();
+            restart();
+        } else {
+            // napr. pri otoceni obrazovky
+            game = (HangmanGame) savedInstanceState.getSerializable(BUNDLE_KEY);
+            restart();
+            updateGallows();
+        }
+
+
+        Log.d("OBESENEC", "vola sa metoda On CREATE");
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putSerializable(BUNDLE_KEY, game);
+    }
 
     public void guessLetter(View view) {
         // hra skoncila, mam button RESTART
@@ -84,7 +104,6 @@ public class MainActivity extends AppCompatActivity {
         imageViewGallows.setImageResource(R.drawable.gallows0);
         imageViewGallows.clearColorFilter();
         buttonOk.setText("OK");
-        game = new HangmanGame();
         updateWord();
     }
 
