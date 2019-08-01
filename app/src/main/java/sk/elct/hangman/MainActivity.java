@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.ColorFilter;
 import android.graphics.LightingColorFilter;
 import android.media.MediaPlayer;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -51,15 +52,13 @@ public class MainActivity extends AppCompatActivity {
         // spusta sa aplikacia
         if (savedInstanceState == null) {
             game = new HangmanGame();
-            restart();
+            updateWord();
         } else {
             // napr. pri otoceni obrazovky
             game = (HangmanGame) savedInstanceState.getSerializable(BUNDLE_KEY);
-            restart();
+            updateWord();
             updateGallows();
         }
-
-
         Log.d("OBESENEC", "vola sa metoda On CREATE");
     }
 
@@ -101,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void restart() {
+        game = new HangmanGame();
         imageViewGallows.setImageResource(R.drawable.gallows0);
         imageViewGallows.clearColorFilter();
         buttonOk.setText("OK");
